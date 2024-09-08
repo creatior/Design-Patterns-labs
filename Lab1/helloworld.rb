@@ -17,3 +17,13 @@ elsif lang == "assembler"
 else
 	puts("Это прекрасно, но скоро будет Ruby!")
 end
+
+puts ("Введите команду Ruby, которую хотите выполнить:")
+ruby_command = $stdin.gets.chomp
+# Выполнение заданной команды Ruby
+eval(ruby_command)
+
+puts ("Введите системную команду, которую хотите выполнить:")
+system_command = $stdin.gets.chomp
+# Выполнение заданной системной команды
+system(system_command)
