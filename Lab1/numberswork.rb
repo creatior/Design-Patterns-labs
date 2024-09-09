@@ -1,11 +1,11 @@
 # Задание 1.4 (Вариант 4)
 
 # Проверка двух чисел на взаимную простоту
-def isCoprime (a, b)
-	while b != 0
-		a, b = b, a % b
+def isCoprime (number1, number2)
+	while number2 != 0
+		number1, number2 = number2, number1 % number2
 	end
-	if a == 1
+	if number1 == 1
 		true
 	else
 		false
@@ -13,17 +13,35 @@ def isCoprime (a, b)
 end
 
 # Подсчет количества четных чисел, не взаимно простых с данным
-def countEvenNonCoprime (a)
-	n = 0
-	(2..a).each do |x|
-		if !isCoprime(a, x) && x.even?
-			n += 1
+def countEvenNonCoprime (number)
+	count = 0
+	(2..number).each do |x|
+		if !isCoprime(number, x) && x.even?
+			count += 1
 		end
 	end
-	n
+	count
 end
+
+# Поиск максимальной цифры числа, не делящейся на 3
+def maxDigitNotDivByThree (number)
+	max_digit = 0
+	while number > 0
+		if (number % 10) % 3 != 0 && number % 10 > max_digit
+			max_digit = number % 10
+		end
+		number /= 10
+	end
+	max_digit
+end
+			
 
 # Задание 1.4.1
 print("Введите число: ")
-a = $stdin.gets.chomp.to_i
-print ("Количество четных чисел, не взаимно простых с данным: #{countEvenNonCoprime(a)}")
+number1 = $stdin.gets.chomp.to_i
+puts ("Количество четных чисел, не взаимно простых с данным: #{countEvenNonCoprime(number1)}")
+
+# Задание 1.4.2
+print("Введите число: ")
+number2 = $stdin.gets.chomp.to_i
+print ("Наибольшая цифра числа, не делящаяся на 3: #{maxDigitNotDivByThree(number2)}")
