@@ -1,51 +1,37 @@
 class Student
+	# Объявление переменных экземпляра
+	attr_accessor :id, :phone_number, :telegram, :email, :git
 	attr_reader :name
+	
 	# Инициализация экзепляра класса
 	def initialize name, id: nil, phone_number: nil, telegram: nil, email: nil, git: nil
 	    @name = name
-		@phone_number = phone_number
-		@telegram = telegram
-		@email = email
-		@git = git
-	end
-	# Геттеры и сеттеры
-	def id=(id)
 		@id = id
-	end
-	
-	def id
-		@id
-	end
-	
-	def phone_number=(phone_number)
 		@phone_number = phone_number
-	end
-	
-	def phone_number
-		@phone_number
-	end
-	
-	def telegram=(telegram)
 		@telegram = telegram
-	end
-	
-	def telegram
-		@telegram
-	end
-
-	def email=(email)
 		@email = email
-	end
-	
-	def email
-		@email
-	end
-	
-	def git=(git)
 		@git = git
 	end
 	
-	def git
-		@git
+	# Объявление публичного метода, печатающего информацию о студенте
+	public
+	def print_information
+		print "ФИО: #{@name}"
+		if @id != nil
+			print "; ID: #{@id}"
+		end
+		if @phone_number != nil
+			print "; Номер телефона: #{@phone_number}"
+		end
+		if @telegram != nil
+			print "; Telegram: #{@telegram}"
+		end
+		if @email != nil
+			print "; E-mail: #{@email}"
+		end
+		if @git != nil
+			print "; Git: #{@git}"
+		end
+		print "\n"
 	end
 end
