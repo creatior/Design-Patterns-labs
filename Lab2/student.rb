@@ -1,11 +1,13 @@
 class Student
 	# Объявление переменных экземпляра
 	attr_accessor :id, :phone_number, :telegram, :email, :git
-	attr_reader :name
+	attr_reader :first_name, :surname, :last_name 
 	
 	# Инициализация экзепляра класса
-	def initialize name, id: nil, phone_number: nil, telegram: nil, email: nil, git: nil
-	    @name = name
+	def initialize first_name, surname, last_name , id: nil, phone_number: nil, telegram: nil, email: nil, git: nil
+	    @first_name = first_name
+	    @surname = surname
+	    @last_name = last_name
 		@id = id
 		@phone_number = phone_number
 		@telegram = telegram
@@ -16,7 +18,7 @@ class Student
 	# Объявление публичного метода, печатающего информацию о студенте
 	public
 	def print_information
-		print "ФИО: #{@name}"
+		print "ФИО: #{@surname} #{@firstname} #{@last_name}"
 		if @id != nil
 			print "; ID: #{@id}"
 		end
