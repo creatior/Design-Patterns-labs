@@ -2,25 +2,14 @@
 require "./student.rb"
 
 # Создание экземляров класса и вывод информации на экран
-student1 = Student.new("Васильев", "Иван", "Дмитриевич")
-student1.id = 546
-student1.phone_number = "89365584621"
-student1.telegram = "@vanyav"
-student1.email = "vanyav@mail.ru"
-student1.git = "github.com/vanyavvv"
+student1 = Student.new("Васильев", "Иван", "Дмитриевич", id: 546, phone_number: "89365584621", telegram: "@vanyav", email: "vanyav@mail.ru", git: "github.com/vanyavvv")
 
 puts student1
 
-student2 = Student.new("Кошкин", "Валерий", "Олегович")
-student2.id = 154
-student2.email = "kvalera@bk.ru"
-student2.git = "github.com/kvalera"
+student2 = Student.new("Кошкин", "Валерий", "Олегович", id: 154, email: "kvalera@bk.ru", git: "github.com/kvalera")
 
 puts student2
 
-student3 = Student.new("Васильков", "Юрий", "Ахмедович")
-student3.id = 675
-student3.phone_number = "84657558462"
-student3.email = "yuvasilek@yandex.ru"
+student3 = Student.new("Васильков", "Юрий", "Ахмедович", id: 675, phone_number: "84657558462", email: "yuvasilek@yandex.ru")
 
 puts student3

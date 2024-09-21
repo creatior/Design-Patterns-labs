@@ -4,18 +4,18 @@ class Student
 	attr_reader :first_name, :surname, :last_name 
 	
 	# Инициализация экзепляра класса
-	def initialize first_name, surname, last_name , id: nil, phone_number: nil, telegram: nil, email: nil, git: nil
+	def initialize first_name, surname, last_name , options = []
 	    @first_name = first_name
 	    @surname = surname
 	    @last_name = last_name
-		@id = id
-		@phone_number = phone_number
-		@telegram = telegram
-		@email = email
-		@git = git
+		@id = options[:id]
+		@phone_number = options[:phone_number]
+		@telegram = options[:telegram]
+		@email = options[:email]
+		@git = options[:git]
 	end
 	
-	# Объявление публичного метода, печатающего информацию о студенте
+	# Объявление публичного метода, возвращающего строку, хранящую информацию о студенте
 	public
 	def to_s
 		result = "ФИО: #{@first_name} #{@surname} #{@last_name}"
