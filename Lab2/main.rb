@@ -9,18 +9,18 @@ student1.telegram = "@vanyav"
 student1.email = "vanyav@mail.ru"
 student1.git = "github.com/vanyavvv"
 
-student1.print_information
+puts student1
 
 student2 = Student.new("Кошкин Валерий Олегович")
 student2.id = 154
 student2.email = "kvalera@bk.ru"
 student2.git = "github.com/kvalera"
 
-student2.print_information
+puts student2
 
 student3 = Student.new("Васильков Юрий Ахмедович")
 student3.id = 675
 student3.phone_number = "84657558462"
 student3.email = "yuvasilek@yandex.ru"
 
-student3.print_information
+puts student3

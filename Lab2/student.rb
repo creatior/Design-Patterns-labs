@@ -15,23 +15,23 @@ class Student
 	
 	# Объявление публичного метода, печатающего информацию о студенте
 	public
-	def print_information
-		print "ФИО: #{@name}"
+	def to_s
+		result = "ФИО: #{@name}"
 		if @id != nil
-			print "; ID: #{@id}"
+			result += "; ID: #{@id}"
 		end
 		if @phone_number != nil
-			print "; Номер телефона: #{@phone_number}"
+			result += "; Номер телефона: #{@phone_number}"
 		end
 		if @telegram != nil
-			print "; Telegram: #{@telegram}"
+			result += "; Telegram: #{@telegram}"
 		end
 		if @email != nil
-			print "; E-mail: #{@email}"
+			result += "; E-mail: #{@email}"
 		end
 		if @git != nil
-			print "; Git: #{@git}"
+			result += "; Git: #{@git}"
 		end
-		print "\n"
+		result
 	end
 end
