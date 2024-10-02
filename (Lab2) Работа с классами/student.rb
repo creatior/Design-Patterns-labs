@@ -9,14 +9,21 @@ class Student
 	    @surname = surname
 	    @last_name = last_name
 		@id = options[:id]
-		
-		# Проверка валидности ввода номера телефона
-		Student.phone_number_valid?(options[:phone_number])
-		@phone_number = options[:phone_number]
-		
-		@telegram = options[:telegram]
-		@email = options[:email]
 		@git = options[:git]
+		set_contacts(phone_number:options[:phone_number], telegram:options[:telegram], email:options[:email])
+	end
+	
+		# Установка контактов
+	def set_contacts(contacts = [])
+		if contacts[:phone_number] && Student.phone_number_valid?(contacts[:phone_number])
+			@phone_number = contacts[:phone_number]
+		end
+		if contacts[:telegram] && Student.telegram_valid?(contacts[:telegram])
+			@telegram = contacts[:telegram]
+		end
+		if contacts[:email] && Student.email_valid?(contacts[:email])
+			@email = contacts[:email]
+		end
 	end
 	
 	public
@@ -111,56 +118,35 @@ class Student
 	end
 	
 	# Переопределение сеттеров с проверкой полей
-	# Проверка имени
+	# Установка имени
 	def first_name=(first_name)
 		if first_name && Student.name_valid?(first_name)
 			@first_name = first_name
 		end
 	end
 		
-	# Проверка фамилии
+	# Установка фамилии
 	def surname=(surname)
 		if surname && Student.name_valid?(surname)
 			@surname = surname
 		end
 	end
 	
-	# Проверка отчества
+	# Установка отчества
 	def last_name=(last_name)
 		if last_name && Student.name_valid?(last_name)
 			@last_name = last_name
 		end
 	end
 	
-	# Проверка номера телефона
-	def phone_number=(phone_number)
-		if phone_number && Student.phone_number_valid?(phone_number)
-			@phone_number = phone_number
-		end
-	end
-	
-	# Проверка ID
+	# Установка ID
 	def id=(id)
 		if id && Student.id_valid?(id)
 			@id = id
 		end
 	end
 	
-	# Проверка telegram
-	def telegram=(telegram)
-		if telegram && Student.telegram_valid?(telegram)
-			@telegram = telegram
-		end
-	end
-
-	# Проверка email
-	def email=(email)
-		if email && Student.email_valid?(email)
-			@email = email
-		end
-	end
-
-	# Проверка git
+	# Установка git
 	def git=(git)
 		if git && Student.git_valid?(id)
 			@git = git
