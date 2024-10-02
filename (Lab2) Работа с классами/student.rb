@@ -42,6 +42,18 @@ class Student
 		end
 		result
 	end
+		
+	def validate
+		has_git? && has_contacts?
+	end
+		
+	def has_git?
+		!@git.nil?
+	end
+	
+	def has_contacts?
+		!@phone_number.nil? || !@email.nil? || !@telegram.nil?
+	end
 	
 	# Методы проверки валидности введенных полей
 	# Проверка номера телефона
