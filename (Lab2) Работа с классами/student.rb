@@ -13,7 +13,7 @@ class Student
 		set_contacts(phone_number:options[:phone_number], telegram:options[:telegram], email:options[:email])
 	end
 	
-		# Установка контактов
+	# Установка контактов
 	def set_contacts(contacts = [])
 		if contacts[:phone_number] && Student.phone_number_valid?(contacts[:phone_number])
 			@phone_number = contacts[:phone_number]
@@ -46,6 +46,21 @@ class Student
 		end
 		if @git != nil
 			result += "; Git: #{@git}"
+		end
+		result
+	end
+
+	def get_info
+		result = "#{@surname} #{@first_name} #{last_name}, "
+		if !@git.nil?
+			result += "Git: #{@git}; "
+		end
+		if !@phone_number.nil?
+			result += "Номер телефона: #{@phone_number}"
+		elsif !@telegram.nil?
+			result += "Telegram: #{@telegram}"
+		elsif !@email.nil?
+			result += "E-mail: #{@email}"
 		end
 		result
 	end
