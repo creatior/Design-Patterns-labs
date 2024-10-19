@@ -1,5 +1,6 @@
 require "./validator.rb"
 
+# Класс, хранящий информацию о студенте
 class Student
 	# Объявление переменных экземпляра
 	attr_reader :first_name, :surname, :last_name, :id, :phone_number, :telegram, :email, :git
@@ -71,12 +72,12 @@ class Student
 	end
 	
 	def get_contact
-		if !student.phone_number.nil?
-			"Номер телефона: #{student.phone_number}"
-		elsif !student.telegram.nil?
-			"Telegram: #{student.telegram}"
-		elsif !student.email.nil?
-			"Email: #{student.email}"
+		if !@phone_number.nil?
+			"Номер телефона: #{@phone_number}"
+		elsif !@telegram.nil?
+			"Telegram: #{@telegram}"
+		elsif !@email.nil?
+			"Email: #{@email}"
 		end
 	end
 	
