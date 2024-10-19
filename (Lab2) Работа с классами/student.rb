@@ -1,16 +1,15 @@
 class Student
 	# Объявление переменных экземпляра
-	attr_accessor :id, :phone_number, :telegram, :email, :git
-	attr_reader :first_name, :surname, :last_name 
+	attr_reader :first_name, :surname, :last_name, :id, :phone_number, :telegram, :email, :git
 	
 	# Инициализация экзепляра класса
-	def initialize first_name, surname, last_name , options = []
-	    @first_name = first_name
-	    @surname = surname
-	    @last_name = last_name
-		@id = options[:id]
-		@git = options[:git]
-		set_contacts(phone_number:options[:phone_number], telegram:options[:telegram], email:options[:email])
+	def initialize first_name:, surname:, last_name:, id:nil, git:nil, phone_number:nil, telegram:nil, email:nil
+	    self.first_name = first_name
+	    self.surname = surname
+	    self.last_name = last_name
+		self.id = id
+		self.git = git
+		set_contacts(phone_number: phone_number, telegram: telegram, email: email)
 	end
 	
 	# Установка контактов
@@ -31,7 +30,7 @@ class Student
 	# Объявление публичного метода, возвращающего строку, хранящую информацию о студенте
 	
 	def to_s
-		result = "ФИО: #{@first_name} #{@surname} #{@last_name}"
+		result = "ФИО: #{@surname} #{@first_name} #{@last_name}"
 		if @id != nil
 			result += "; ID: #{@id}"
 		end
@@ -51,7 +50,7 @@ class Student
 	end
 
 	def get_info
-		result = "#{@surname} #{@first_name} #{last_name}, "
+		result = "#{@surname} #{@first_name[0]}. #{@last_name[0]}.; "
 		if !@git.nil?
 			result += "Git: #{@git}; "
 		end
@@ -64,7 +63,7 @@ class Student
 		end
 		result
 	end
-		
+	
 	def validate
 		has_git? && has_contacts?
 	end
@@ -125,7 +124,7 @@ class Student
 	
 	# Проверка git
 	def self.git_valid?(git)
-		if /^(?:https:\/\/github\.com\/)?[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/.match?(git) || git.nil?
+		if /^github\.com\/[a-zA-Z0-9_-]+$/.match?(git) || git.nil?
 			true
 		else 
 			raise ArgumentError, "Неправильный ввод git: #{git}"
@@ -153,7 +152,7 @@ class Student
 			@last_name = last_name
 		end
 	end
-	
+
 	# Установка ID
 	def id=(id)
 		if id && Student.id_valid?(id)
@@ -163,9 +162,8 @@ class Student
 	
 	# Установка git
 	def git=(git)
-		if git && Student.git_valid?(id)
+		if git && Student.git_valid?(git)
 			@git = git
 		end
 	end
 end
-
