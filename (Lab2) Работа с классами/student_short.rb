@@ -1,5 +1,7 @@
+require "./person.rb"
+
 # Класс, хранящий краткую информацию о студенте
-class Student_short
+class Student_short < Person
 	attr_reader :id, :initials, :git, :contact
 	
 	def initialize (student:nil, id:nil, student_info:nil)

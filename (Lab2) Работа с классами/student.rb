@@ -1,7 +1,7 @@
-require "./validator.rb"
+require "./person.rb"
 
 # Класс, хранящий информацию о студенте
-class Student
+class Student < Person
 	# Объявление переменных экземпляра
 	attr_reader :first_name, :surname, :last_name, :id, :phone_number, :telegram, :email, :git
 	
@@ -21,13 +21,13 @@ class Student
 	
 	# Установка контактов
 	def set_contacts(contacts = [])
-		if contacts[:phone_number] && Validator.phone_number_valid?(contacts[:phone_number])
+		if contacts[:phone_number] && Person.phone_number_valid?(contacts[:phone_number])
 			@phone_number = contacts[:phone_number]
 		end
-		if contacts[:telegram] && Validator.telegram_valid?(contacts[:telegram])
+		if contacts[:telegram] && Person.telegram_valid?(contacts[:telegram])
 			@telegram = contacts[:telegram]
 		end
-		if contacts[:email] && Validator.email_valid?(contacts[:email])
+		if contacts[:email] && Person.email_valid?(contacts[:email])
 			@email = contacts[:email]
 		end
 	end
@@ -84,10 +84,6 @@ class Student
 	def validate
 		has_git? && has_contacts?
 	end
-		
-	def has_git?
-		!@git.nil?
-	end
 	
 	def has_contacts?
 		!@phone_number.nil? || !@email.nil? || !@telegram.nil?
@@ -96,36 +92,22 @@ class Student
 	# Переопределение сеттеров с проверкой полей
 	# Установка имени
 	def first_name=(first_name)
-		if first_name && Validator.name_valid?(first_name)
+		if first_name && Person.name_valid?(first_name)
 			@first_name = first_name
 		end
 	end
 		
 	# Установка фамилии
 	def surname=(surname)
-		if surname && Validator.name_valid?(surname)
+		if surname && Person.name_valid?(surname)
 			@surname = surname
 		end
 	end
 	
 	# Установка отчества
 	def last_name=(last_name)
-		if last_name && Validator.name_valid?(last_name)
+		if last_name && Person.name_valid?(last_name)
 			@last_name = last_name
-		end
-	end
-
-	# Установка ID
-	def id=(id)
-		if id && Validator.id_valid?(id)
-			@id = id
-		end
-	end
-	
-	# Установка git
-	def git=(git)
-		if git && Validator.git_valid?(git)
-			@git = git
 		end
 	end
 end

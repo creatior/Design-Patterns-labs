@@ -1,5 +1,10 @@
-# Класс, проверяющий валидность заполнения полей
-class Validator
+class Person
+	attr_reader :id, :git
+
+	def has_git?
+		!@git.nil?
+	end
+
 	# Проверка номера телефона
 	def self.phone_number_valid?(phone_number)
 		if /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.match?(phone_number) || phone_number.nil?
@@ -51,6 +56,20 @@ class Validator
 			true
 		else 
 			raise ArgumentError, "Неправильный ввод git: #{git}"
+		end
+	end
+	
+	# Установка ID
+	def id=(id)
+		if id && Person.id_valid?(id)
+			@id = id
+		end
+	end
+	
+	# Установка git
+	def git=(git)
+		if git && Person.git_valid?(git)
+			@git = git
 		end
 	end
 end
