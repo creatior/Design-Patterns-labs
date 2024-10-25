@@ -3,7 +3,7 @@ require "./person.rb"
 # Класс, хранящий информацию о студенте
 class Student < Person
 	# Объявление переменных экземпляра
-	attr_reader :first_name, :surname, :last_name, :id, :phone_number, :telegram, :email, :git
+	attr_reader :first_name, :surname, :last_name, :phone_number, :telegram, :email
 	
 	# Инициализация экзепляра класса
 	def initialize first_name:, surname:, last_name:, id:nil, git:nil, phone_number:nil, telegram:nil, email:nil

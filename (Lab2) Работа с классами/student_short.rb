@@ -2,7 +2,7 @@ require "./person.rb"
 
 # Класс, хранящий краткую информацию о студенте
 class Student_short < Person
-	attr_reader :id, :initials, :git, :contact
+	attr_reader :initials, :contact
 	
 	def initialize (student:nil, id:nil, student_info:nil)
 		if !student.nil?
