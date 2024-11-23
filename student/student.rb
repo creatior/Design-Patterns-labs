@@ -1,5 +1,5 @@
 require_relative "./person.rb"
-require_relative "./iterators/binary_iterator.rb"
+require_relative "./binary_tree/iterators/binary_iterator.rb"
 
 # Класс, хранящий информацию о студенте
 class Student < Person include Comparable
