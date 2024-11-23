@@ -7,4 +7,11 @@ end
 
 tree = HTMLTree.new()
 
-tree.each {|tag| puts tag}
+tree.dfs.each do |element|
+    print "#{element} "
+end
+puts ""
+
+tree.bfs.each do |element|
+    print "#{element} "
+end

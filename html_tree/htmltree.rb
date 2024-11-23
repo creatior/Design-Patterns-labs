@@ -1,4 +1,6 @@
 require "./tag.rb"
+require "./iterators/dfs_iterator.rb"
+require "./iterators/bfs_iterator.rb"
 
 class HTMLTree
 	include Enumerable
@@ -10,6 +12,16 @@ class HTMLTree
 	def initialize
 		@root = parse_html("./index.html")
 	end
+
+	def bfs
+		BFS_Iterator.new(self.root)
+	end
+
+	def dfs
+		DFS_Iterator.new(self.root)
+	end
+
+	private
 
 	def parse_html(file_name)
 		html_string = ""
@@ -53,13 +65,6 @@ class HTMLTree
 		attributes
 	end
 	
-	def each(&block)
-		each_dfs(@root, &block)
-	end
 	
-	def each_dfs(tag, &block)
-		yield tag
-		tag.children.each {|child| each_dfs(child, &block)}
-	end
 
 end
