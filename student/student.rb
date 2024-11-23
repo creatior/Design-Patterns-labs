@@ -1,8 +1,9 @@
-require_relative "./person.rb"
+require "./person.rb"
 require_relative "./binary_tree/iterators/binary_iterator.rb"
 
 # Класс, хранящий информацию о студенте
-class Student < Person include Comparable
+class Student < Person 
+  include Comparable
 	# Объявление переменных экземпляра
 	attr_reader :first_name, :surname, :last_name, :phone_number, :telegram, :email, :birthdate
 	
@@ -13,8 +14,8 @@ class Student < Person include Comparable
 		end
 		
 		self.first_name = first_name
-	    self.surname = surname
-	    self.last_name = last_name
+	  self.surname = surname
+	  self.last_name = last_name
 		self.id = id
 		self.git = git
 		set_contacts(phone_number: phone_number, telegram: telegram, email: email)
@@ -24,6 +25,8 @@ class Student < Person include Comparable
 	def <=>(other)
         if other.is_a?(Student)
             self.birthdate <=> other.birthdate
+        end
+  end
 
 	# Установка контактов
 	def set_contacts(contacts = [])
@@ -58,6 +61,9 @@ class Student < Person include Comparable
 		end
 		if @git != nil
 			result += "; Git: #{@git}"
+		end
+		if !@birthdate.nil?
+		  result += "; Birtdate: #{@birthdate}"
 		end
 		result
 	end
@@ -109,8 +115,9 @@ class Student < Person include Comparable
 
     # Установка даты рождения
 	def birthdate=(birthdate)
-		if birthdate && birthdate.class == "Date"
+		if birthdate && birthdate.class == Date
 			@birthdate = birthdate
 		end
 	end
 end
+

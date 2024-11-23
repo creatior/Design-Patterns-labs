@@ -1,14 +1,20 @@
 require_relative "./node.rb"
+require_relative "./iterators/binary_iterator.rb"
+require_relative "../student.rb"
 
 class BinaryTree include Enumerable
     attr_accessor :root
 
-    def initialize
+    def initialize(root:nil)
         self.root = nil
     end
 
     def add(value)
-        new_node = Node.new(value: value)
+        new_node = value.is_a?(Student) ? Node.new(value: value) : nil
+        
+        if new_node.nil?
+          raise ArgumentError, 'Invalid argument'
+        end
         
         if self.root.nil?
             root = new_node
@@ -16,7 +22,11 @@ class BinaryTree include Enumerable
             insert(self.root, new_node)
         end
     end
-
+    
+    def iterator
+      Binary_iterator.new(self.root)
+    end
+    
     private
 
     def insert(root, node)

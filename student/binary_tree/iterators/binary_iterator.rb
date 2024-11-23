@@ -7,13 +7,13 @@ class Binary_iterator include Enumerable
        bfs(@root, &block)
    end
 
-    private
+   private
 
-   def bfs(root, &block)
+   def bfs(node, &block)
        return if node.nil?
 
        bfs(node.left, &block)
-       yield node.value
+       block.call(node.value)
        bfs(node.right, &block)
    end
 
