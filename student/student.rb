@@ -1,12 +1,13 @@
-require "./person.rb"
+require_relative "./person.rb"
+require_relative "./iterators/binary_iterator.rb"
 
 # Класс, хранящий информацию о студенте
-class Student < Person
+class Student < Person include Comparable
 	# Объявление переменных экземпляра
-	attr_reader :first_name, :surname, :last_name, :phone_number, :telegram, :email
+	attr_reader :first_name, :surname, :last_name, :phone_number, :telegram, :email, :birthdate
 	
 	# Инициализация экзепляра класса
-	def initialize first_name:, surname:, last_name:, id:nil, git:nil, phone_number:nil, telegram:nil, email:nil
+	def initialize first_name:, surname:, last_name:, id:nil, git:nil, phone_number:nil, telegram:nil, email:nil, birthdate:nil
 	    if (!first_name || !surname || !last_name)
 			raise ArgumentError, "ФИО не введен или введен не полностью"
 		end
@@ -17,8 +18,13 @@ class Student < Person
 		self.id = id
 		self.git = git
 		set_contacts(phone_number: phone_number, telegram: telegram, email: email)
+		self.birthdate = birthdate
 	end
-	
+
+	def <=>(other)
+        if other.is_a?(Student)
+            self.birthdate <=> other.birthdate
+
 	# Установка контактов
 	def set_contacts(contacts = [])
 		if contacts[:phone_number] && Person.phone_number_valid?(contacts[:phone_number])
@@ -98,6 +104,13 @@ class Student < Person
 	def git=(git)
 		if git && Person.git_valid?(git)
 			@git = git
+		end
+	end
+
+    # Установка даты рождения
+	def birthdate=(birthdate)
+		if birthdate && birthdate.class == "Date"
+			@birthdate = birthdate
 		end
 	end
 end
