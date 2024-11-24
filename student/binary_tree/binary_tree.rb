@@ -2,7 +2,7 @@ require_relative "./node.rb"
 require_relative "./iterators/binary_iterator.rb"
 require_relative "../student.rb"
 
-class BinaryTree include Enumerable
+class BinaryTree
     attr_accessor :root
 
     def initialize(root:nil)
@@ -17,14 +17,14 @@ class BinaryTree include Enumerable
         end
         
         if self.root.nil?
-            root = new_node
+            self.root = new_node
         else
             insert(self.root, new_node)
         end
     end
     
     def iterator
-      Binary_iterator.new(self.root)
+        Binary_iterator.new(self.root)
     end
     
     private

@@ -1,5 +1,4 @@
-require "./person.rb"
-require_relative "./binary_tree/iterators/binary_iterator.rb"
+require_relative "./person.rb"
 
 # Класс, хранящий информацию о студенте
 class Student < Person 
@@ -23,9 +22,11 @@ class Student < Person
 	end
 
 	def <=>(other)
-        if other.is_a?(Student)
-            self.birthdate <=> other.birthdate
-        end
+  	if other.is_a?(Student)
+    	self.birthdate <=> other.birthdate
+    else
+    	raise ArgumentError, "Can't compare #{self.class} with #{other.class}"
+    end
   end
 
 	# Установка контактов
@@ -120,4 +121,6 @@ class Student < Person
 		end
 	end
 end
+
+
 
