@@ -1,4 +1,4 @@
-require "./person.rb"
+require_relative "./person.rb"
 
 # Класс, хранящий краткую информацию о студенте
 class Student_short < Person

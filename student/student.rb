@@ -5,7 +5,7 @@ class Student < Person
   include Comparable
 	# Объявление переменных экземпляра
 	attr_reader :first_name, :surname, :last_name, :phone_number, :telegram, :email, :birthdate
-	
+
 	# Инициализация экзепляра класса
 	def initialize first_name:, surname:, last_name:, id:nil, git:nil, phone_number:nil, telegram:nil, email:nil, birthdate:nil
 	    if (!first_name || !surname || !last_name)
