@@ -36,6 +36,7 @@ class Data_list
 			result << new_row
 			self.index += 1
 		end
+		result = [get_names].concat(result)
 		return Data_table.new(result)
 	end
 

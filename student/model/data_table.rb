@@ -19,7 +19,7 @@ class Data_table
 		elsif column > column_count
 			raise IndexError, "Column index is out of range"
 		else
-			return data[row, column]
+			return self.data[row][column]
 		end
 	end
 
