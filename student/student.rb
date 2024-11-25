@@ -69,6 +69,20 @@ class Student < Person
 		result
 	end
 
+	# to hash
+	def to_h
+		{ id: self.id, 
+		first_name: self.first_name, 
+		surname: self.surname, 
+		last_name: self.last_name, 
+		phone_number: self.phone_number
+		telegram: self.telegram, 
+		email: self.email, 
+		git: self.git,
+		birthdate: self.birthdate
+	}
+	end
+
 	def get_info
 		result = initials
 		if !@git.nil?
