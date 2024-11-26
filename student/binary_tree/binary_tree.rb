@@ -1,6 +1,5 @@
 require_relative "./node.rb"
 require_relative "./iterators/binary_iterator.rb"
-require_relative "../student.rb"
 
 class BinaryTree
     attr_accessor :root
