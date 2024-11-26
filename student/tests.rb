@@ -1,7 +1,6 @@
 require_relative "./student.rb"
 require_relative "./student_short.rb"
 require_relative "./model/data_list_student_short.rb"
-
 require "date"
 def print_table(table)
   (0...table.row_count).each do |i|
