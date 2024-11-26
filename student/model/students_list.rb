@@ -1,19 +1,25 @@
+require_relative "../student_short.rb"
+require_relative "./data_list_student_short.rb"
+require_relative "../student.rb"
+
 # super class
 class Students_list
+  attr_accessor :students, :file_path, :data_storage_strategy
   # constructor
-  def initialize(file_path)
+  def initialize(file_path, data_storage_strategy)
     self.file_path = file_path
+    self.data_storage_strategy = data_storage_strategy
     self.students = read
   end
 
   # reading from file
   def read
-    raise NotImplementedError, "Not implemented"
+    self.data_storage_strategy.read(self.file_path)
   end
 
   # writing to file
   def write
-    raise NotImplementedError, "Not implemented"
+    self.data_storage_strategy.write(self.file_path, self.students)
   end
 
   # get student by id
@@ -60,5 +66,5 @@ class Students_list
   end
 
   private
-  attr_accessor :students, :file_path
+  #attr_accessor :students, :file_path
 end

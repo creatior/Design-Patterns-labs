@@ -1,4 +1,5 @@
 require_relative "./person.rb"
+require "date"
 
 # Класс, хранящий информацию о студенте
 class Student < Person 
@@ -64,7 +65,7 @@ class Student < Person
 			result += "; Git: #{@git}"
 		end
 		if !@birthdate.nil?
-		  result += "; Birtdate: #{@birthdate}"
+		  result += "; Birthdate: #{@birthdate}"
 		end
 		result
 	end
