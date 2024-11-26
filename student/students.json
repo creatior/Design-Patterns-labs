@@ -1,0 +1,35 @@
+[
+  {
+    "id": 546,
+    "first_name": "Иван",
+    "surname": "Васильев",
+    "last_name": "Дмитриевич",
+    "phone_number": "89365584621",
+    "telegram": "@vanyav",
+    "email": "vanyav@mail.ru",
+    "git": "github.com/vanyavvv",
+    "birthdate": "2002-01-23"
+  },
+  {
+    "id": 154,
+    "first_name": "Валерий",
+    "surname": "Кошкин",
+    "last_name": "Олегович",
+    "phone_number": null,
+    "telegram": null,
+    "email": "kvalera@bk.ru",
+    "git": "github.com/kvalera",
+    "birthdate": "2003-01-22"
+  },
+  {
+    "id": 675,
+    "first_name": "Юрий",
+    "surname": "Васильков",
+    "last_name": "Ахмедович",
+    "phone_number": "84657558462",
+    "telegram": null,
+    "email": "yuvasilek@yandex.ru",
+    "git": null,
+    "birthdate": "2000-07-13"
+  }
+]
