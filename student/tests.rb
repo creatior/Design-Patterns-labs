@@ -48,6 +48,23 @@ def db_select_test
   end
 
   conn.close if conn
-  end
+end
 
-db_select_test
+def student_constructor_from_hash_test
+  hash = {
+    "id": 546,
+    "first_name": "Иван",
+    "surname": "Васильев",
+    "last_name": "Дмитриевич",
+    "phone_number": "89365584621",
+    "telegram": "@vanyav",
+    "email": "vanyav@mail.ru",
+    "git": "github.com/vanyavvv",
+    "birthdate": "2002-01-23"
+  }
+
+  student = Student.new_from_hash(hash)
+  puts student
+end
+
+student_constructor_from_hash_test

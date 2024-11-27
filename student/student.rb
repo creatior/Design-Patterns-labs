@@ -22,6 +22,11 @@ class Student < Person
 		self.birthdate = birthdate
 	end
 
+	# constructor from hash
+	def self.new_from_hash(hash)
+		self.new(**hash.transform_keys(&:to_sym))
+	end
+
 	def <=>(other)
   	if other.is_a?(Student)
     	self.birthdate <=> other.birthdate
