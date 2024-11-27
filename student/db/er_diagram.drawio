@@ -1,0 +1,16 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 YaBrowser/24.10.0.0 Safari/537.36" version="24.9.1">
+  <diagram name="Страница — 1" id="Wd4YCbWL0C63dt579lWE">
+    <mxGraphModel dx="1083" dy="777" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P7Is1zcQtdrnoz8vb3dG-9" value="student" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-90" y="-6" width="164" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="P7Is1zcQtdrnoz8vb3dG-11" value="&lt;b&gt;id:&lt;/b&gt;serial&lt;div&gt;first_name:varchar(40)&lt;/div&gt;&lt;div&gt;surname:varchar&lt;span style=&quot;background-color: initial;&quot;&gt;(40)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;last_name:varchar&lt;span style=&quot;background-color: initial;&quot;&gt;(40)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;telegram:varchar&lt;span style=&quot;background-color: initial;&quot;&gt;(40)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;git:varchar&lt;span style=&quot;background-color: initial;&quot;&gt;(40)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;phone_number:varchar&lt;span style=&quot;background-color: initial;&quot;&gt;(16)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;email:varchar&lt;span style=&quot;background-color: initial;&quot;&gt;(40)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;birthdate:date&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="P7Is1zcQtdrnoz8vb3dG-9" vertex="1">
+          <mxGeometry y="26" width="164" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
