@@ -7,7 +7,7 @@ class Person
 
 	# Проверка номера телефона
 	def self.phone_number_valid?(phone_number)
-		if /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.match?(phone_number) || phone_number.nil?
+		if /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,14}$/.match?(phone_number) || phone_number.nil?
 			true
 		else
 			raise ArgumentError, "Неправильная запись номера телефона: #{phone_number}"
@@ -25,7 +25,7 @@ class Person
 	
 	# Проверка ID
 	def self.id_valid?(id)
-		if id.nil? || id.class == Integer
+		if id.nil? || id.class == Integer || id.to_i
 			true
 		else 
 			raise ArgumentError, "Неправильный ввод ID: #{id}"
@@ -34,7 +34,7 @@ class Person
 	
 	# Проверка telegram
 	def self.telegram_valid?(telegram)
-		if /^@[a-zA-Z0-9_]{4,20}$/.match?(telegram) || telegram.nil?
+		if /^@[a-zA-Z0-9_]{4,40}$/.match?(telegram) || telegram.nil?
 			true
 		else 
 			raise ArgumentError, "Неправильный ввод telegram: #{telegram}"

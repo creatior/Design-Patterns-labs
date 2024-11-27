@@ -4,11 +4,11 @@ require_relative "./person.rb"
 class Student_short < Person
 	# to string
 	def to_s
-		"ФИО: #{@initials}; ID: #{@id}; #{@git}; #{@contact}"
+		"ФИО: #{@initials}; ID: #{@id}; Git: #{@git}; #{@contact}"
 	end
 
 	def self.from_student (student:nil)
-		new(id:student.id, git: "Git: #{student.git}", initials: student.get_info.split("; ")[0], contact: student.contact)
+		new(id:student.id, git: "#{student.git}", initials: student.get_info.split("; ")[0], contact: student.contact)
 	end
 
 	def self.from_string (id:nil, student_info:nil)

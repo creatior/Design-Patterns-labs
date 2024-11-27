@@ -123,7 +123,7 @@ class Student < Person
 	# Установка ID
 	def id=(id)
 		if id && Person.id_valid?(id)
-			@id = id
+			@id = id.to_i
 		end
 	end
 	

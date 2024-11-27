@@ -1,6 +1,7 @@
 require_relative "./student.rb"
 require_relative "./student_short.rb"
 require_relative "./model/data_list_student_short.rb"
+require_relative "./students_list_db.rb"
 require "date"
 require "pg"
 require 'dotenv/load'
@@ -8,7 +9,7 @@ require 'dotenv/load'
 def print_table(table)
   (0...table.row_count).each do |i|
     (0...table.column_count).each do |j|
-      print "#{table.get(i, j)} "
+      print "#{table.get(i, j)}\t\t"
     end
     puts ""
   end
@@ -26,8 +27,6 @@ def data_list_test
   list = [student1_short, student2_short, student3_short]
 
   data_list = Data_list_student_short.new(list)
-  data_list.select(0)
-  data_list.select(1)
 
   table = data_list.get_data
 
@@ -67,4 +66,44 @@ def student_constructor_from_hash_test
   puts student
 end
 
-student_constructor_from_hash_test
+def students_list_DB_test
+  student_db = Students_list_DB.new(
+    host: ENV['DB_HOST'],
+    dbname: ENV['DB_NAME'],
+    user: ENV['DB_USER'],
+    password: ENV['DB_PASSWORD']
+  )
+
+  result1 = student_db.get_by_id(42)
+  #puts result1
+
+  result2 = student_db.get_k_n_student_short_list(1, 20)
+  table = result2.get_data
+  print_table table
+
+  # result3 = student_db.add_student(Student.new(
+  #   surname: "Васильев", 
+  #   first_name: "Иван", 
+  #   last_name: "Дмитриевич", 
+  #   git: "github.com/vanyavvv", 
+  #   phone_number: "89365584621", 
+  #   telegram: "@vanyav", 
+  #   email: "vanyav@mail.ru", 
+  #   birthdate: Date.new(2002, 1, 23)))
+
+  # result3 = student_db.replace_student_by_id(12, Student.new(
+  #   surname: "Васильев", 
+  #   first_name: "Иван", 
+  #   last_name: "Дмитриевич", 
+  #   git: "github.com/vanyavvv", 
+  #   phone_number: "89365584621", 
+  #   telegram: "@vanyav", 
+  #   email: "vanyav@mail.ru", 
+  #   birthdate: Date.new(2002, 1, 23)))
+
+  # student_db.delete_by_id(48)
+
+  puts student_db.get_student_short_count
+end
+
+students_list_DB_test

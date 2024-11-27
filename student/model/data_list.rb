@@ -1,7 +1,7 @@
 require_relative "./data_table"
 
 class Data_list
-
+	attr_reader :list
 	def initialize(list)
 		self.list = list
 		self.selected = []
@@ -30,9 +30,9 @@ class Data_list
 
 	def get_data
 		result = []
-		self.selected.each do |i|
-			data = self.list[i]
-			new_row = build_row(index, self.list[i])
+		self.list.each do |element|
+			data = element
+			new_row = build_row(index, element)
 			result << new_row
 			self.index += 1
 		end
@@ -41,7 +41,7 @@ class Data_list
 	end
 
 	private
-	attr_reader :list
+	#attr_reader :list
 	attr_accessor :selected, :index
 
 	def list=(list)
