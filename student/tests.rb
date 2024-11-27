@@ -2,6 +2,9 @@ require_relative "./student.rb"
 require_relative "./student_short.rb"
 require_relative "./model/data_list_student_short.rb"
 require "date"
+require "pg"
+require 'dotenv/load'
+
 def print_table(table)
   (0...table.row_count).each do |i|
     (0...table.column_count).each do |j|
@@ -11,6 +14,7 @@ def print_table(table)
   end
 end
 
+# data list test
 def data_list_test
   student1 = Student.new(surname: "Васильев", first_name: "Иван", last_name: "Дмитриевич", id: 546, git: "github.com/vanyavvv", phone_number: "89365584621", telegram: "@vanyav", email: "vanyav@mail.ru", birthdate: Date.new(2002, 1, 23))
   student2 = Student.new(surname: "Кошкин", first_name: "Валерий", last_name: "Олегович", id: 154, email: "kvalera@bk.ru", git: "github.com/kvalera", birthdate: Date.new(2003, 1, 22))
@@ -30,4 +34,20 @@ def data_list_test
   print_table table
 end
 
-data_list_test
+# database select test
+def db_select_test
+  conn = PG.connect(
+    host: ENV['DB_HOST'],
+    dbname: ENV['DB_NAME'],
+    user: ENV['DB_USER'],
+    password: ENV['DB_PASSWORD']
+  )
+  result = conn.exec("SELECT * FROM student WHERE birthdate > '2002-01-05'")
+  result.each do |row|
+    puts row
+  end
+
+  conn.close if conn
+  end
+
+db_select_test
