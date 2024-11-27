@@ -2,6 +2,7 @@ require_relative "./student.rb"
 require_relative "./student_short.rb"
 require_relative "./model/data_list_student_short.rb"
 require_relative "./students_list_db.rb"
+require_relative "./db_client.rb"
 require "date"
 require "pg"
 require 'dotenv/load'
@@ -67,12 +68,14 @@ def student_constructor_from_hash_test
 end
 
 def students_list_DB_test
-  student_db = Students_list_DB.new(
+  client = DB_client.instance(
     host: ENV['DB_HOST'],
     dbname: ENV['DB_NAME'],
     user: ENV['DB_USER'],
     password: ENV['DB_PASSWORD']
   )
+
+  student_db = Students_list_DB.new(client)
 
   result1 = student_db.get_by_id(42)
   #puts result1

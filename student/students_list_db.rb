@@ -4,8 +4,8 @@ require_relative "./db_client.rb"
 
 class Students_list_DB
   # constructor
-  def initialize(db_config)
-    self.connection = DB_client.new(db_config)
+  def initialize(connection)
+    self.connection = connection
   end
 
   # get student by id
