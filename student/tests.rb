@@ -42,9 +42,10 @@ def db_select_test
     user: ENV['DB_USER'],
     password: ENV['DB_PASSWORD']
   )
+  puts conn.class
   result = conn.exec("SELECT * FROM student WHERE birthdate > '2002-01-05'")
   result.each do |row|
-    puts row
+    #puts row
   end
 
   conn.close if conn
@@ -109,4 +110,4 @@ def students_list_DB_test
   puts student_db.get_student_short_count
 end
 
-students_list_DB_test
+db_select_test

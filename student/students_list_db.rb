@@ -71,7 +71,7 @@ class Students_list_DB
   # get count of student_short
   def get_student_short_count
     result = self.connection.query("SELECT COUNT(*) FROM student")
-    result.first["count"]
+    result.first["count"].to_i
   end
 
   private

@@ -3,8 +3,9 @@ require "pg"
 class DB_client
   private_class_method :new
 
-  def instance(db_config = nil)
+  def self.instance(db_config = nil)
     @instance ||= new(db_config)
+  end
 
   # constructor
   def initialize(db_config)
