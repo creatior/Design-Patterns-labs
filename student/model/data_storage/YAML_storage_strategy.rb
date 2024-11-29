@@ -1,6 +1,6 @@
 require "yaml"
-require_relative "./data_storage_strategy.rb"
-require_relative "../student.rb"
+require "./model/data_storage/data_storage_strategy"
+require "./model/student/student.rb"
 
 # class for working with yaml file
 class YAML_storage_strategy < Data_storage_strategy

@@ -1,4 +1,4 @@
-require_relative "./person.rb"
+require "./model/person/person.rb"
 
 # Класс, хранящий краткую информацию о студенте
 class Student_short < Person

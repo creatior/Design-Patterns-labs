@@ -1,6 +1,6 @@
 require "json"
-require_relative "./data_storage_strategy.rb"
-require_relative "../student.rb"
+require "data_storage_strategy"
+require "./model/student/student.rb"
 
 # class for working with json file
 class JSON_storage_strategy < Data_storage_strategy

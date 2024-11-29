@@ -1,4 +1,4 @@
-require_relative "./person.rb"
+require "./model/person/person.rb"
 require "date"
 
 # Класс, хранящий информацию о студенте

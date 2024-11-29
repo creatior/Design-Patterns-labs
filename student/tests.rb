@@ -1,8 +1,8 @@
-require_relative "./student.rb"
-require_relative "./student_short.rb"
-require_relative "./model/data_list_student_short.rb"
-require_relative "./students_list_db.rb"
-require_relative "./db_client.rb"
+require "./model/student/student.rb"
+require "./model/student_short/student_short.rb"
+require "./model/data_list/data_list_student_short.rb"
+require "./model/students_list/students_list_db.rb"
+require "./data_access/db_client/db_client.rb"
 require "date"
 require "pg"
 require 'dotenv/load'
@@ -42,10 +42,9 @@ def db_select_test
     user: ENV['DB_USER'],
     password: ENV['DB_PASSWORD']
   )
-  puts conn.class
   result = conn.exec("SELECT * FROM student WHERE birthdate > '2002-01-05'")
   result.each do |row|
-    #puts row
+    puts row
   end
 
   conn.close if conn
@@ -110,4 +109,4 @@ def students_list_DB_test
   puts student_db.get_student_short_count
 end
 
-db_select_test
+students_list_DB_test

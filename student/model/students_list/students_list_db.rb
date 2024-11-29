@@ -1,6 +1,6 @@
-require_relative "./model/data_list_student_short.rb"
-require_relative "./student.rb"
-require_relative "./db_client.rb"
+require "./model/data_list/data_list_student_short.rb"
+require "./model/student/student.rb"
+require "./data_access/db_client/db_client.rb"
 
 class Students_list_DB
   # constructor

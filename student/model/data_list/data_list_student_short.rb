@@ -1,5 +1,5 @@
-require_relative "./data_table.rb"
-require_relative "./data_list.rb"
+require "./model/data_table/data_table.rb"
+require "./model/data_list/data_list.rb"
 
 class Data_list_student_short < Data_list
 

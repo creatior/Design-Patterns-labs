@@ -1,6 +1,6 @@
-require_relative "../student_short.rb"
-require_relative "./data_list_student_short.rb"
-require_relative "../student.rb"
+require "./model/student_short/student_short.rb"
+require "./model/data_list/data_list_student_short.rb"
+require "./model/student/student.rb"
 
 # super class
 class Students_list

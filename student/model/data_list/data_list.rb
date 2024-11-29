@@ -1,4 +1,4 @@
-require_relative "./data_table"
+require "./model/data_table/data_table.rb"
 
 class Data_list
 	attr_reader :list
