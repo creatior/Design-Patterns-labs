@@ -26,4 +26,7 @@ class Tag
 		@children << child
 	end
 	
+	def has_children?
+		!@children.empty?
+	end
 end

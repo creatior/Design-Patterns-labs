@@ -9,7 +9,7 @@ class Students_list
   def initialize(file_path, data_storage_strategy)
     self.file_path = file_path
     self.data_storage_strategy = data_storage_strategy
-    self.students = read
+    self.students = read 
   end
 
   # reading from file
@@ -21,7 +21,7 @@ class Students_list
   def write
     self.data_storage_strategy.write(self.file_path, self.students)
   end
-
+ 
   # get student by id
   def get_student_by_id(id)
     self.students.find {|student| student.id == id}

@@ -12,7 +12,7 @@ class HTMLTree
 	def initialize
 		@root = parse_html("./index.html")
 	end
-
+	
 	def bfs
 		BFS_Iterator.new(self.root)
 	end
