@@ -1,41 +1,30 @@
-#super class
-class Students_list
+require "./model/students_list/students_list_interface"
+
+class Students_list_file_adapter < Students_list_interface
 
   def initialize(adapter)
-    # students list interface
+    # students list file
     self.adapter = adapter
   end
 
-  # get student by id
   def get_student_by_id(id)
     self.adapter.get_student_by_id(id)
   end
 
-  # get k list of n elements
   def get_k_n_student_short_list(k, n, data_list=nil)
     self.adapter.get_k_n_student_short_list(k, n, data_list)
   end
 
-  # add student
   def add_student(student)
     self.adapter.add_student(student)
   end
 
-  # replace student by id
   def replace_student(id, new_student)
     self.adapter.replace_student(id, new_student)
   end
 
-  # delete student by id
-  def delete_student(id)
-    self.adapter.delete_student(id)
-  end
-
-  # get count of students
   def get_student_short_count
     self.adapter.get_student_short_count
   end
 
-  private
-  attr_accessor :adapter
 end

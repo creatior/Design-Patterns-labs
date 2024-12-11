@@ -1,5 +1,5 @@
 require "json"
-require "data_storage_strategy"
+require "./model/data_storage/data_storage_strategy"
 require "./model/student/student.rb"
 
 # class for working with json file

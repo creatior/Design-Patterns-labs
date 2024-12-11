@@ -1,8 +1,9 @@
 require "./model/data_list/data_list_student_short.rb"
 require "./model/student/student.rb"
 require "./data_access/db_client/db_client.rb"
+require "./model/students_list/students_list_interface"
 
-class Students_list_DB
+class Students_list_DB < Students_list_interface
   # constructor
   def initialize(connection)
     self.connection = connection
