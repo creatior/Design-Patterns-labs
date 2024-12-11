@@ -12,8 +12,8 @@ class Students_list
   end
 
   # get k list of n elements
-  def get_k_n_student_short_list(k, n, data_list=nil)
-    self.adapter.get_k_n_student_short_list(k, n, data_list)
+  def get_k_n_student_short_list(k, n, data_list=nil, filter=nil)
+    self.adapter.get_k_n_student_short_list(k, n, data_list, filter)
   end
 
   # add student
@@ -32,7 +32,7 @@ class Students_list
   end
 
   # get count of students
-  def get_student_short_count
+  def get_student_short_count(filter=nil)
     self.adapter.get_student_short_count
   end
 

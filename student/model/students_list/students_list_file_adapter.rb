@@ -11,8 +11,8 @@ class Students_list_file_adapter < Students_list_interface
     self.adapter.get_student_by_id(id)
   end
 
-  def get_k_n_student_short_list(k, n, data_list=nil)
-    self.adapter.get_k_n_student_short_list(k, n, data_list)
+  def get_k_n_student_short_list(k, n, data_list=nil, filter=nil)
+    self.adapter.get_k_n_student_short_list(k, n, data_list, filter=nil)
   end
 
   def add_student(student)

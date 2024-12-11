@@ -19,9 +19,10 @@ class Students_list_DB < Students_list_interface
   end
 
   # get k n student_short list
-  def get_k_n_student_short_list(k, n)
+  def get_k_n_student_short_list(k, n, filter=nil)
     start_index = (k - 1) * n
     result = self.connection.query("SELECT * FROM student LIMIT #{n} OFFSET #{start_index}").to_a
+    result = filter.nil? ? result : filter.apply(result)
     students_short = (result || []).map { |hash| Student_short.from_student(student:Student.new_from_hash(hash)) }
     data_list ||= Data_list_student_short.new(students_short)
     data_list
@@ -70,8 +71,12 @@ class Students_list_DB < Students_list_interface
   end
 
   # get count of student_short
-  def get_student_short_count
-    result = self.connection.query("SELECT COUNT(*) FROM student")
+  def get_student_short_count(filter=nil)
+    query = "SELECT COUNT(*) FROM student"
+
+    query = filter.nil? ? query : query + "WHERE" + filter.apply(query)
+
+    result = self.connection.query(query)
     result.first["count"].to_i
   end
 
