@@ -13,6 +13,7 @@ class Student_list_view < FXVerticalFrame
 
     create_filtering_area
     create_table_area
+    create_buttons_area
   end
 
   def create_filtering_area
@@ -70,7 +71,7 @@ class Student_list_view < FXVerticalFrame
   end
 
   private
-  attr_accessor :table, :prev_button, :page_label, :next_button, :data, :total_pages, :current_page, :sort_order
+  attr_accessor :table, :prev_button, :page_label, :next_button, :data, :total_pages, :current_page, :sort_order, :add_button, :update_button, :delete_button, :refresh_button
 
   def populate_table
     data_list = Data_list_student_short.new([
@@ -161,6 +162,47 @@ class Student_list_view < FXVerticalFrame
 
     self.data = Data_table.new(all_rows)
     update_table
+  end
+
+  def create_buttons_area
+    buttons_area = FXVerticalFrame.new(self, opts: LAYOUT_FILL)
+
+    controls = FXHorizontalFrame.new(buttons_area, opts: LAYOUT_FILL_X)
+    self.add_button = FXButton.new(controls, "Add", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.update_button = FXButton.new(controls, "Update", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.delete_button = FXButton.new(controls, "Delete", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.refresh_button = FXButton.new(controls, "Refresh", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+
+    self.table.connect(SEL_SELECTED) { refresh_buttons }
+    self.table.connect(SEL_DESELECTED) { refresh_buttons }
+
+    refresh_buttons
+  end
+
+  def get_selected_rows
+    selected_rows = []
+    (0...self.table.numRows).each do |row|
+      selected_rows << row if self.table.rowSelected?(row)
+    end
+    selected_rows
+  end
+
+  def refresh_buttons
+    selected_rows = get_selected_rows
+    self.add_button.enabled = true
+    self.refresh_button.enabled = true
+
+    if selected_rows.size == 0
+      self.update_button.enabled = false
+      self.delete_button.enabled = false
+    elsif selected_rows.size == 1
+      self.update_button.enabled = true
+      self.delete_button.enabled = true
+    else
+      self.update_button.enabled = false
+      self.delete_button.enabled = true
+    end
+
   end
 
 end
