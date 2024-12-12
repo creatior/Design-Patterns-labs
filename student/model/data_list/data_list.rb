@@ -17,11 +17,7 @@ class Data_list
 	end
 
 	def get_selected
-		ids = []
-		selected.each do |index|
-			ids << self.selected[index].id
-		end
-		ids
+		self.selected
 	end
 
 	def get_names
@@ -30,9 +26,10 @@ class Data_list
 
 	def get_data
 		result = []
-		self.list.each do |element|
-			data = element
-			new_row = build_row(index, element)
+		selected_list = get_selected
+		selected_list.each do |i|
+			data = self.list[i]
+			new_row = build_row(self.index, self.list[i])
 			result << new_row
 			self.index += 1
 		end

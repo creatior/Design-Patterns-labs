@@ -52,7 +52,7 @@ class Person
 	
 	# Проверка git
 	def self.git_valid?(git)
-		if /^github\.com\/[a-zA-Z0-9_-]+$/.match?(git) || git.nil?
+		if /^https:\/\/github\.com\/[a-zA-Z0-9_-]+$/.match?(git) || git.nil?
 			true
 		else 
 			raise ArgumentError, "Неправильный ввод git: #{git}"
