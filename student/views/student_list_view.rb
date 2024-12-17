@@ -133,23 +133,6 @@ class Student_list_view < FXVerticalFrame
     end
   end
 
-  # getting data for page
-  def get_page_data(page_number)
-    start_index = (page_number - 1) * ROWS_PER_PAGE + 1
-    end_index = start_index + ROWS_PER_PAGE - 1
-    data_page = []
-
-    (start_index..end_index).each do |row_index|
-      break if row_index >= self.data.row_count
-      row = []
-      (0...self.data.column_count).each do |col_index|
-        row << self.data.get(row_index, col_index)
-      end
-      data_page << row
-    end
-    data_page
-  end
-
   # switch page
   def switch_page(direction)
     new_page = self.current_page + direction
@@ -158,27 +141,27 @@ class Student_list_view < FXVerticalFrame
     self.controller.refresh_data
   end
 
-  # sort
-  def sort_table_by_column(column_index)
-    return if self.data.nil? || self.data.row_count <= 1
+  # # sort
+  # def sort_table_by_column(column_index)
+  #   return if self.data.nil? || self.data.row_count <= 1
 
-    headers = (0...self.data.column_count).map { |col_index| self.data.get(0, col_index) }
+  #   headers = (0...self.data.column_count).map { |col_index| self.data.get(0, col_index) }
 
-    rows = (1...self.data.row_count).map do |row_index|
-      (0...self.data.column_count).map { |col_index| self.data.get(row_index, col_index)}
-    end
+  #   rows = (1...self.data.row_count).map do |row_index|
+  #     (0...self.data.column_count).map { |col_index| self.data.get(row_index, col_index)}
+  #   end
 
-    self.sort_order ||= {}
-    self.sort_order[column_index] = !sort_order.fetch(column_index, false)
+  #   self.sort_order ||= {}
+  #   self.sort_order[column_index] = !sort_order.fetch(column_index, false)
 
-    sorted_rows = rows.sort_by { |row| row[column_index] }
-    sorted_rows.reverse! unless self.sort_order[column_index]
+  #   sorted_rows = rows.sort_by { |row| row[column_index] }
+  #   sorted_rows.reverse! unless self.sort_order[column_index]
 
-    all_rows = [headers] + sorted_rows
+  #   all_rows = [headers] + sorted_rows
 
-    self.data = Data_table.new(all_rows)
-    update_table
-  end
+  #   self.data = Data_table.new(all_rows)
+  #   update_table
+  # end
 
   def get_selected_rows
     selected_rows = []
