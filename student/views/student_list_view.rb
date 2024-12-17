@@ -1,19 +1,24 @@
 require './model/data_list/data_list_student_short.rb'
 require './model/student/student.rb'
-require './model/student_short/student_short.rb'
+require './model/student/student_short.rb'
+require './controllers/student_list_controller.rb'
 require 'fox16'
 include Fox
 
 class Student_list_view < FXVerticalFrame
-
-  ROWS_PER_PAGE = 4
+  attr_accessor :controller, :current_page, :items_per_page
 
   def initialize(parent)
     super(parent, opts: LAYOUT_FILL)
 
+    self.controller = Student_list_controller.new(self)
+    self.items_per_page = 16
+
     create_filtering_area
     create_table_area
     create_buttons_area
+
+    refresh_data
   end
 
   def create_filtering_area
@@ -52,16 +57,20 @@ class Student_list_view < FXVerticalFrame
     table_area = FXVerticalFrame.new(self, opts: LAYOUT_FILL)
 
     self.table = FXTable.new(table_area, opts: LAYOUT_FILL | TABLE_READONLY | TABLE_COL_SIZABLE)
-    self.table.setTableSize(ROWS_PER_PAGE, 4)
+    self.table.setTableSize(self.items_per_page, 4)
     self.table.rowHeaderMode = LAYOUT_FIX_WIDTH
     self.table.rowHeaderWidth = 30
+
+    self.table.setColumnWidth(0, 30)
+    self.table.setColumnWidth(1, 120)
+    self.table.setColumnWidth(2, 200)
+    self.table.setColumnWidth(3, 180)
 
     controls = FXHorizontalFrame.new(table_area, opts: LAYOUT_FILL_X)
     self.prev_button = FXButton.new(controls, "<", opts: BUTTON_NORMAL | LAYOUT_LEFT)
     self.page_label = FXLabel.new(controls, "Страница: 1/1", opts: LAYOUT_CENTER_X)
     self.next_button = FXButton.new(controls, ">", opts: BUTTON_NORMAL | LAYOUT_RIGHT)
 
-    populate_table
     self.prev_button.connect(SEL_COMMAND) { switch_page(-1) }
     self.next_button.connect(SEL_COMMAND) { switch_page(1) }
 
@@ -70,48 +79,55 @@ class Student_list_view < FXVerticalFrame
     end
   end
 
-  private
-  attr_accessor :table, :prev_button, :page_label, :next_button, :data, :total_pages, :current_page, :sort_order, :add_button, :update_button, :delete_button, :refresh_button
+  def create_buttons_area
+    buttons_area = FXVerticalFrame.new(self, opts: LAYOUT_FILL)
 
-  def populate_table
-    data_list = Data_list_student_short.new([
-      Student_short.from_student(student: Student.new(surname: "Воробьев", first_name: "Артем", last_name: "Олегович", git: "https://github.com/creatior", id: 5, telegram: "@artyomvor", birthdate: "25.09.2004")),
-      Student_short.from_student(student: Student.new(surname: "Вавакин", first_name: "Владислав", last_name: "Олегович", git: "https://github.com/VavakinV", id: 5, telegram: "@Renbhed", birthdate: "16.06.2004")),
-      Student_short.from_student(student: Student.new(surname: "Иванченко", first_name: "Павла", last_name: "Андреевна", git: "https://github.com/eatdetey", id: 5, telegram: "@eatdetey", birthdate: "12.11.2004")),
-      Student_short.from_student(student: Student.new(surname: "Смирнов", first_name: "Никита", last_name: "Олегович", git: "https://github.com/ZaiiiRan", id: 1, telegram: "@zaiiran", phone_number: "89654251232", birthdate: "03.06.2004")),
-      Student_short.from_student(student: Student.new(surname: "Блягоз", first_name: "Амаль", last_name: "Хазретович", git: "https://github.com/lamafout", id: 2, telegram: "@lamafout", email: "lamafout@gmail.com", birthdate: "14.06.2004")),
-    ])
-    data_list.select(0)
-    data_list.select(1)
-    data_list.select(2)
-    data_list.select(3)
-    data_list.select(4)
-    self.data = data_list.get_data
-    self.total_pages = ((self.data.row_count - 1).to_f / ROWS_PER_PAGE).ceil
-    self.current_page = 1
-    update_table
+    controls = FXHorizontalFrame.new(buttons_area, opts: LAYOUT_FILL_X)
+    self.add_button = FXButton.new(controls, "Add", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.update_button = FXButton.new(controls, "Update", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.delete_button = FXButton.new(controls, "Delete", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.refresh_button = FXButton.new(controls, "Refresh", opts: BUTTON_NORMAL | LAYOUT_LEFT)
+    self.refresh_button.connect(SEL_COMMAND) { refresh_data }
+
+
+    self.table.connect(SEL_SELECTED) { refresh_buttons }
+    self.table.connect(SEL_DESELECTED) { refresh_buttons }
+
+    refresh_buttons
   end
 
-  # update table
-  def update_table(sorted_data = nil)
-    return if self.data.nil? || self.data.row_count <= 1
-    (0...self.data.column_count).each do |col_index|
-      self.table.setColumnText(col_index, self.data.get(0, col_index).to_s)
+  def set_table_params(column_names, entries_count)
+    column_names.each_with_index do |name, index|
+      self.table.setItemText(0, index, name)
     end
+    self.total_pages = (entries_count / self.items_per_page.to_f).ceil
+    self.page_label.text = "Страница #{self.current_page} из #{self.total_pages}"
+  end
+
+  def set_table_data(input_data_table)
     clear_table
-    data_to_display = sorted_data || get_page_data(self.current_page)
-    data_to_display.each_with_index do |row, row_index|
-      row.each_with_index do |cell, col_index|
-        self.table.setItemText(row_index, col_index, cell.to_s)
+    (0...input_data_table.row_count).each do |row|
+      (0...input_data_table.column_count).each do |col|
+        self.table.setItemText(row, col, input_data_table.get(row, col).to_s)
       end
     end
-    self.page_label.text = "Страница: #{self.current_page}/#{self.total_pages}"
   end
+
+  def show_error_message(message)
+    if self.created?
+      FXMessageBox.error(self, MBOX_OK, "Ошибка", message)
+    else
+      puts "Ошибка: #{message}"
+    end
+  end
+
+  private
+  attr_accessor :table, :prev_button, :page_label, :next_button, :data, :total_pages, :sort_order, :add_button, :update_button, :delete_button, :refresh_button
 
   # clear table
   def clear_table
-    (0...ROWS_PER_PAGE).each do |row_index|
-      (0...self.data.column_count).each do |col_index|
+    (0...self.table.numRows).each do |row_index|
+      (0...self.table.numColumns).each do |col_index|
         self.table.setItemText(row_index, col_index, "")
       end
     end
@@ -139,7 +155,7 @@ class Student_list_view < FXVerticalFrame
     new_page = self.current_page + direction
     return if new_page < 1 || new_page > self.total_pages
     self.current_page = new_page
-    update_table
+    self.controller.refresh_data
   end
 
   # sort
@@ -162,21 +178,6 @@ class Student_list_view < FXVerticalFrame
 
     self.data = Data_table.new(all_rows)
     update_table
-  end
-
-  def create_buttons_area
-    buttons_area = FXVerticalFrame.new(self, opts: LAYOUT_FILL)
-
-    controls = FXHorizontalFrame.new(buttons_area, opts: LAYOUT_FILL_X)
-    self.add_button = FXButton.new(controls, "Add", opts: BUTTON_NORMAL | LAYOUT_LEFT)
-    self.update_button = FXButton.new(controls, "Update", opts: BUTTON_NORMAL | LAYOUT_LEFT)
-    self.delete_button = FXButton.new(controls, "Delete", opts: BUTTON_NORMAL | LAYOUT_LEFT)
-    self.refresh_button = FXButton.new(controls, "Refresh", opts: BUTTON_NORMAL | LAYOUT_LEFT)
-
-    self.table.connect(SEL_SELECTED) { refresh_buttons }
-    self.table.connect(SEL_DESELECTED) { refresh_buttons }
-
-    refresh_buttons
   end
 
   def get_selected_rows
@@ -203,6 +204,11 @@ class Student_list_view < FXVerticalFrame
       self.delete_button.enabled = true
     end
 
+  end
+
+  def refresh_data
+    self.current_page = 1
+    self.controller.refresh_data
   end
 
 end

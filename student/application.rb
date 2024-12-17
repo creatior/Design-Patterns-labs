@@ -1,4 +1,4 @@
-require "./student_list_view.rb"
+require "./views/student_list_view.rb"
 require 'fox16'
 
 include Fox

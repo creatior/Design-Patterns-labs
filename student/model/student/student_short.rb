@@ -1,4 +1,4 @@
-require "./model/person/person.rb"
+require "./model/student/person.rb"
 
 # Класс, хранящий краткую информацию о студенте
 class Student_short < Person
@@ -11,7 +11,7 @@ class Student_short < Person
 		new(id:student.id, git: "#{student.git}", initials: student.get_info.split("; ")[0], contact: student.contact)
 	end
 
-	def self.from_string (id:nil, student_info:nil)
+	def self.from_string (id=nil, student_info=nil)
 		initials, git, contact = student_info.split("; ")
 		new(id:id, git:git, initials:initials, contact:contact)
 	end

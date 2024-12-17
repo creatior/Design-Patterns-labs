@@ -1,4 +1,4 @@
-require "./model/student_short/student_short.rb"
+require "./model/student/student_short.rb"
 require "./model/data_list/data_list_student_short.rb"
 require "./model/student/student.rb"
 require "./model/students_list/students_list_interface"
@@ -31,8 +31,10 @@ class Students_list_file < Students_list_interface
   def get_k_n_student_short_list(k, n, data_list=nil, filter=nil)
     start_index = (k - 1) * n
     filtered_students = filter.nil? ? self.students : filter.apply(self.students)
-    students_short = (filtered_students[start_index, n] || []).map { |student| Student_short.from_student(student) }
+    students_short = (filtered_students[start_index, n] || []).map { |student| Student_short.from_student(student: student) }
     data_list ||= Data_list_student_short.new(students_short)
+    data_list.index = start_index
+    data_list.list = students_short
     data_list
   end
 

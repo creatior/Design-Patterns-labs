@@ -1,5 +1,5 @@
 require "./model/student/student.rb"
-require "./model/student_short/student_short.rb"
+require "./model/student/student_short.rb"
 require "./model/data_list/data_list_student_short.rb"
 require "./model/students_list/students_list_db.rb"
 require "./data_access/db_client/db_client.rb"

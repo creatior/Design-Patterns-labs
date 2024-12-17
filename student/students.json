@@ -7,7 +7,7 @@
     "phone_number": "89365584621",
     "telegram": "@vanyav",
     "email": "vanyav@mail.ru",
-    "git": "github.com/vanyavvv",
+    "git": "https://github.com/vanyavvv",
     "birthdate": "2002-01-23"
   },
   {
@@ -18,7 +18,7 @@
     "phone_number": null,
     "telegram": null,
     "email": "kvalera@bk.ru",
-    "git": "github.com/kvalera",
+    "git": "https://github.com/kvalera",
     "birthdate": "2003-01-22"
   },
   {
@@ -31,5 +31,236 @@
     "email": "yuvasilek@yandex.ru",
     "git": null,
     "birthdate": "2000-07-13"
+  },
+  {
+    "id": 789,
+    "first_name": "Анна",
+    "surname": "Иванова",
+    "last_name": "Петровна",
+    "phone_number": "89754652132",
+    "telegram": "@anna_iv",
+    "email": "anna_iv@gmail.com",
+    "git": "https://github.com/anna_iv",
+    "birthdate": "2001-05-15"
+  },
+  {
+    "id": 801,
+    "first_name": "Дмитрий",
+    "surname": "Смирнов",
+    "last_name": "Алексеевич",
+    "phone_number": "89657845123",
+    "telegram": "@dmitry_sm",
+    "email": "dmitry_sm@yahoo.com",
+    "git": "https://github.com/dmitry_sm",
+    "birthdate": "2002-08-20"
+  },
+  {
+    "id": 802,
+    "first_name": "Екатерина",
+    "surname": "Кузнецова",
+    "last_name": "Ивановна",
+    "phone_number": "89365421379",
+    "telegram": "@ekaterina_kuz",
+    "email": "ekaterina_kuz@mail.ru",
+    "git": "https://github.com/ekaterina_kuz",
+    "birthdate": "2003-11-30"
+  },
+  {
+    "id": 803,
+    "first_name": "Алексей",
+    "surname": "Попов",
+    "last_name": "Владимирович",
+    "phone_number": "89698527496",
+    "telegram": "@alexey_pop",
+    "email": "alexey_pop@gmail.com",
+    "git": "https://github.com/alexey_pop",
+    "birthdate": "2004-03-10"
+  },
+  {
+    "id": 804,
+    "first_name": "Мария",
+    "surname": "Соколова",
+    "last_name": "Андреевна",
+    "phone_number": "89905485252",
+    "telegram": "@maria_sok",
+    "email": "maria_sok@yandex.ru",
+    "git": "https://github.com/maria_sok",
+    "birthdate": "2005-07-25"
+  },
+  {
+    "id": 805,
+    "first_name": "Сергей",
+    "surname": "Михайлов",
+    "last_name": "Игоревич",
+    "phone_number": "88005553535",
+    "telegram": null,
+    "email": "sergey_mikh@bk.ru",
+    "git": null,
+    "birthdate": "2006-12-05"
+  },
+  {
+    "id": 806,
+    "first_name": "Ольга",
+    "surname": "Новикова",
+    "last_name": "Викторовна",
+    "phone_number": "89285556688",
+    "telegram": "@olga_nov",
+    "email": null,
+    "git": null,
+    "birthdate": "2001-04-18"
+  },
+  {
+    "id": 807,
+    "first_name": "Игорь",
+    "surname": "Федоров",
+    "last_name": "Александрович",
+    "phone_number": "89954562389",
+    "telegram": "@igor_fed",
+    "email": null,
+    "git": "https://github.com/igor_fed",
+    "birthdate": "2002-09-28"
+  },
+  {
+    "id": 808,
+    "first_name": "Татьяна",
+    "surname": "Морозова",
+    "last_name": "Дмитриевна",
+    "phone_number": "89785614578",
+    "telegram": "@tatyana_mor",
+    "email": "tatyana_mor@yahoo.com",
+    "git": "https://github.com/tatyana_mor",
+    "birthdate": "2003-02-12"
+  },
+  {
+    "id": 809,
+    "first_name": "Андрей",
+    "surname": "Петров",
+    "last_name": "Сергеевич",
+    "phone_number": "89652345756",
+    "telegram": "@andrey_pet",
+    "email": null,
+    "git": "https://github.com/andrey_pet",
+    "birthdate": "2004-06-22"
+  },
+  {
+    "id": 810,
+    "first_name": "Елена",
+    "surname": "Волкова",
+    "last_name": "Игоревна",
+    "phone_number": "89567861254",
+    "telegram": "@elena_vol",
+    "email": "elena_vol@bk.ru",
+    "git": "https://github.com/elena_vol",
+    "birthdate": "2005-10-08"
+  },
+  {
+    "id": 811,
+    "first_name": "Виктор",
+    "surname": "Алексеев",
+    "last_name": "Петрович",
+    "phone_number": "89124578932",
+    "telegram": "@victor_alek",
+    "email": "victor_alek@gmail.com",
+    "git": "https://github.com/victor_alek",
+    "birthdate": "2006-01-15"
+  },
+  {
+    "id": 812,
+    "first_name": "Наталья",
+    "surname": "Лебедева",
+    "last_name": "Александровна",
+    "phone_number": "89224567898",
+    "telegram": null,
+    "email": "natalya_leb@mail.ru",
+    "git": "https://github.com/natalya_leb",
+    "birthdate": "2001-05-20"
+  },
+  {
+    "id": 813,
+    "first_name": "Михаил",
+    "surname": "Семенов",
+    "last_name": "Владимирович",
+    "phone_number": "89456214798",
+    "telegram": null,
+    "email": "mikhail_sem@yahoo.com",
+    "git": "https://github.com/mikhail_sem",
+    "birthdate": "2002-09-30"
+  },
+  {
+    "id": 814,
+    "first_name": "Светлана",
+    "surname": "Ефимова",
+    "last_name": "Ивановна",
+    "phone_number": "89567890123",
+    "telegram": "@svetlana_efi",
+    "email": "svetlana_efi@yandex.ru",
+    "git": "https://github.com/svetlana_efi",
+    "birthdate": "2003-03-10"
+  },
+  {
+    "id": 815,
+    "first_name": "Павел",
+    "surname": "Давыдов",
+    "last_name": "Алексеевич",
+    "phone_number": "89675899878",
+    "telegram": "@pavel_dav",
+    "email": "pavel_dav@bk.ru",
+    "git": "https://github.com/pavel_dav",
+    "birthdate": "2004-07-25"
+  },
+  {
+    "id": 816,
+    "first_name": "Ирина",
+    "surname": "Григорьева",
+    "last_name": "Викторовна",
+    "phone_number": "89613214578",
+    "telegram": "@irina_grig",
+    "email": "irina_grig@gmail.com",
+    "git": "https://github.com/irina_grig",
+    "birthdate": "2005-11-05"
+  },
+  {
+    "id": 817,
+    "first_name": "Евгений",
+    "surname": "Данилов",
+    "last_name": "Александрович",
+    "phone_number": "89237852200",
+    "telegram": "@evgeny_dan",
+    "email": "evgeny_dan@mail.ru",
+    "git": "https://github.com/evgeny_dan",
+    "birthdate": "2006-04-18"
+  },
+  {
+    "id": 818,
+    "first_name": "Людмила",
+    "surname": "Борисова",
+    "last_name": "Дмитриевна",
+    "phone_number": "89995553333",
+    "telegram": "@lyudmila_bor",
+    "email": "lyudmila_bor@yahoo.com",
+    "git": "https://github.com/lyudmila_bor",
+    "birthdate": "2001-09-28"
+  },
+  {
+    "id": 819,
+    "first_name": "Александр",
+    "surname": "Гусев",
+    "last_name": "Сергеевич",
+    "phone_number": "87891234578",
+    "telegram": null,
+    "email": null,
+    "git": "https://github.com/alexander_gus",
+    "birthdate": "2002-02-12"
+  },
+  {
+    "id": 820,
+    "first_name": "Вера",
+    "surname": "Тихонова",
+    "last_name": "Игоревна",
+    "phone_number": "89334578546",
+    "telegram": "@vera_tih",
+    "email": "vera_tih@bk.ru",
+    "git": "https://github.com/vera_tih",
+    "birthdate": "2003-06-22"
   }
 ]
