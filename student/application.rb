@@ -6,7 +6,7 @@ include Fox
 class App < FXMainWindow
 
   def initialize(app)
-    super(app, "Students", width: 1024, height: 768)
+    super(app, "Students", width: 1024, height: 766)
 
     tabs = FXTabBook.new(self, opts: LAYOUT_FILL)
 
